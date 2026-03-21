@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório de Vistorias</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="user-bar">
+    <div class="nav-links">
+        <a href="{{ url_for('index') }}">🏠 Home</a>
+        <a href="{{ url_for('cadastro') }}">📝 Novo Cadastro</a>
+        <a href="{{ url_for('relatorio') }}">📊 Relatórios</a>
+    </div>
+
+    <div class="user-info">
+        <span>👤 <strong>{{ session['usuario_logado'] }}</strong></span>
+        <a href="{{ url_for('logout') }}" class="btn-logout">Sair</a>
+    </div>
+</nav>
+    <h1>📋 Lista de Vistorias</h1>
+    
+    <table class="tabela-vistorias">
+        <thead>
+            <tr>
+                <th>Prédio</th>
+                <th>Vistoriador</th>
+                <th>Data</th>
+                <th>Detalhe</th>
+            </tr>
+        </thead>
+        <tbody>
+           {% for item in vistorias %}
+<tr>
+    <td>{{ item.value.nome_predio }}</td>
+    <td>{{ item.value.vistoriador }}</td>
+    <td>{{ item.value.data_vistoria }}</td>
+    
+    <td>
+        <div style="display: flex; gap: 8px;">
+            <button 
+                class="btn-detalhe" 
+                onclick='abrirModal({{ item.value | tojson | safe }})'>
+                🔍
+            </button>
+
+            <button class="btn-detalhe" 
+                    style="background-color: #e74c3c;" 
+                    onclick="excluirVistoria('{{ item.id }}')">
+                    🗑️
+            </button>
+            <a href="{{ url_for('editar', id=item.id) }}" 
+                    class="btn-detalhe" 
+                    style="background-color: #f39c12; text-decoration: none; display: flex; align-items: center; justify-content: center;">
+                        ✏️
+            </a>
+        </div>
+    </td>
+</tr>
+{% endfor %}
+        </tbody>
+    </table>
+
+    <div id="meuModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <div id="conteudoModal">
+                </div>
+        </div>
+    </div>
+
+    
+     <script src="{{ url_for('static', filename='script.js') }}"></script>
+    
+</body>
+</html>

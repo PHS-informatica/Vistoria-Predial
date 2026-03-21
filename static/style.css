@@ -1,0 +1,345 @@
+/* Estilos gerais */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 20px;
+    
+    /* Mantemos sua cor original como "fundo de emergência" */
+    background-color: #f8f9fa; 
+
+    /* Adicionamos a chamada da imagem */
+    background-image: url('fundo-vistoria.jpg'); 
+    
+    /* Regras para a imagem se comportar bem */
+    background-size: cover;           /* Cobre a tela toda */
+    background-position: center;      /* Centraliza o desenho */
+    background-repeat: no-repeat;     /* Não faz mosaico */
+    background-attachment: fixed;     /* Fica parada enquanto você rola a página */
+}
+h1 { color: #2c3e50; text-align: center; }
+
+
+/* PAGINA INDEX */
+/* --- Estilos da Home Page (PHS Data & Tech) --- */
+.home-container {
+    max-width: 900px;
+    margin: 60px auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.header-home {
+    margin-bottom: 50px;
+}
+
+.header-home h1 {
+    color: #2c3e50;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.header-home p {
+    color: #7f8c8d;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.card-menu {
+    background: #ffffff;
+    padding: 40px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #eee;
+}
+
+.card-menu:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+    border-color: #3498db;
+}
+
+.icon-large {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.card-menu h3 {
+    margin: 10px 0;
+    color: #2c3e50;
+    font-size: 1.4rem;
+}
+
+.card-menu p {
+    color: #95a5a6;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.footer-home {
+    margin-top: 80px;
+    color: #bdc3c7;
+    font-size: 0.85rem;
+}
+
+/*PAGINA LOGIN */
+
+/* --- Estilos para a Tela de Login --- */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh; /* Centraliza verticalmente */
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.95); /* Leve transparência para ver o fundo */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+}
+
+.login-header h2 {
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.login-header p {
+    color: #7f8c8d;
+    margin-bottom: 25px;
+    font-size: 0.9em;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: background 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #2980b9;
+}
+
+.login-footer {
+    margin-top: 30px;
+    font-size: 0.8em;
+    color: #bdc3c7;
+}
+
+/* Estilo da Barra Superior de Usuário */
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #3498db;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.user-bar {
+    display: flex;
+    justify-content: space-between; /* Espaça os links do usuário */
+    align-items: center;
+    padding: 10px 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    position: sticky; /* Fica presa no topo ao rolar */
+    top: 0;
+    z-index: 1000;
+}
+
+.user-bar span {
+    margin-right: 20px;
+    color: #2c3e50;
+}
+
+.btn-logout {
+    text-decoration: none;
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-logout:hover {
+    background: #e74c3c;
+    color: white;
+}
+
+/* Estilo da Tabela Principal */
+.tabela-vistorias { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.tabela-vistorias th { background-color: #2c3e50; color: white; padding: 15px; text-align: left; }
+.tabela-vistorias td { padding: 12px; border-bottom: 1px solid #eee; }
+
+/* Botão de Detalhes */
+.btn-detalhe { 
+    background-color: #3498db; color: white; padding: 8px 15px; 
+    text-decoration: none; border-radius: 5px; font-weight: bold;
+}
+.btn-detalhe:hover { background-color: #2980b9; }
+
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    /* Removemos o padding-top alto para o modal subir */
+    padding-top: 10px; 
+    overflow-y: auto; 
+}
+
+.modal-content {
+    background-color: #fff;
+    /* Margin quase zero no topo (5px) para aproveitar cada pixel */
+    margin: 5px auto; 
+    /* Reduzi um pouco o padding interno para ganhar espaço vertical */
+    padding: 15px 25px; 
+    border-radius: 15px;
+    width: 95%;
+    max-width: 550px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* O botão de fechar (X) */
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #999;
+    cursor: pointer;
+}
+
+.close:hover { color: #cc0000; }
+
+
+/* Container do Formulário */
+.container-cadastro {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.container-cadastro h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+}
+
+/* Fieldsets (as caixas de seção) */
+fieldset {
+    border: 1px solid #dcdde1;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+}
+
+legend {
+    font-weight: bold;
+    color: #3498db;
+    padding: 0 10px;
+}
+
+/* Grid de Campos */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas */
+    gap: 15px;
+}
+
+.form-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Três colunas para os itens técnicos */
+    gap: 15px;
+}
+
+/* Estilização dos Inputs */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+.form-group input, 
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.form-group input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+/* Ajuste do botão Voltar */
+.btn-voltar {
+    background-color: #95a5a6;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.btn-voltar:hover {
+    background-color: #7f8c8d;
+}
+

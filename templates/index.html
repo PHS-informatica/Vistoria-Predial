@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Vistorias Prediais - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-light"> 
+
+    <nav class="user-bar">
+    <div class="nav-links">
+        <a href="{{ url_for('index') }}">🏠 Home</a>
+        <a href="{{ url_for('cadastro') }}">📝 Novo Cadastro</a>
+        <a href="{{ url_for('relatorio') }}">📊 Relatórios</a>
+    </div>
+
+    <div class="user-info">
+        <span>👤 <strong>{{ session['usuario_logado'] }}</strong></span>
+        <a href="{{ url_for('logout') }}" class="btn-logout">Sair</a>
+    </div>
+</nav>
+
+    <div class="home-container">
+        <header class="header-home">
+            <h1>🏢 Sistema de Vistorias Prediais</h1>
+            <p>PJI110 - A2026S1N1 - Grupo 22</p>
+        </header>
+
+        <main class="menu-grid">
+            <a href="/cadastro" class="card-menu">
+                <span class="icon-large">📝</span>
+                <h3>Nova Vistoria</h3>
+                <p>Registrar inspeção técnica e upload de fotos.</p>
+            </a>
+
+            <a href="/relatorio" class="card-menu">
+                <span class="icon-large">📊</span>
+                <h3>Relatórios</h3>
+                <p>Consultar histórico, editar dados e gerenciar registros.</p>
+            </a>
+        </main>
+
+        <footer class="footer-home">
+            &copy; Developed by PJI110 - A2026S1N1 - Grupo 22
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ 'Editar Vistoria' if modo == 'edicao' else 'Nova Vistoria' }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="user-bar">
+    <div class="nav-links">
+        <a href="{{ url_for('index') }}">🏠 Home</a>
+        <a href="{{ url_for('cadastro') }}">📝 Novo Cadastro</a>
+        <a href="{{ url_for('relatorio') }}">📊 Relatórios</a>
+    </div>
+
+    <div class="user-info">
+        <span>👤 <strong>{{ session['usuario_logado'] }}</strong></span>
+        <a href="{{ url_for('logout') }}" class="btn-logout">Sair</a>
+    </div>
+</nav>
+    <div class="container-cadastro">
+        <h1>{{ '📝 Editar Vistoria' if modo == 'edicao' else '📝 Nova Vistoria' }}</h1>
+        
+        <form action="{{ url_for('salvar_edicao', id=id) if modo == 'edicao' else '/salvar' }}" method="POST" enctype="multipart/form-data">
+            
+            <fieldset>
+                <legend>Identificação Geral</legend>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Nome do Prédio:</label>
+                        <input type="text" name="nome_predio" required value="{{ dados.nome_predio if dados else '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Vistoriador:</label>
+                        <input type="text" name="vistoriador" required value="{{ dados.vistoriador if dados else '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Endereço:</label>
+                        <input type="text" name="endereco" value="{{ dados.endereco if dados else '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Vencimento Alvará:</label>
+                        <input type="date" name="alvara_vencimento" value="{{ dados.alvara_vencimento if dados else '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label>📅 Data da Vistoria:</label>
+                        <input type="date" name="data_vistoria" value="{{ dados.data_vistoria if dados else '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label>📅 Próxima Vistoria:</label>
+                        <input type="date" name="proxima_vistoria" value="{{ dados.proxima_vistoria if dados else '' }}">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Checklist de Estado (Bom/Regular/Ruim)</legend>
+                <div class="form-grid-3">
+                    <div class="form-group">
+                        <label>🎨 Pintura:</label>
+                        <input type="text" name="pintura" value="{{ dados.pintura if dados else '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label>🧱 Fachada:</label>
+                        <input type="text" name="fachada" value="{{ dados.fachada if dados else '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label>👣 Piso:</label>
+                        <input type="text" name="piso" value="{{ dados.piso if dados else '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label>⚡ Elétrica:</label>
+                        <input type="text" name="eletrica" value="{{ dados.eletrica if dados else '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label>💧 Hidráulica:</label>
+                        <input type="text" name="hidraulica" value="{{ dados.hidraulica if dados else '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label>🏠 Cobertura:</label>
+                        <input type="text" name="cobertura" value="{{ dados.cobertura if dados else '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label>🛡️ Segurança:</label>
+                        <input type="text" name="itens_seguranca" value="{{ dados.itens_seguranca if dados else '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label>🌪️ Ventilação:</label>
+                        <input type="text" name="sistema_ventilacao" value="{{ dados.sistema_ventilacao if dados else '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label>🏗️ Estrutura:</label>
+                        <input type="text" name="laudo_estrutural" value="{{ dados.laudo_estrutural if dados else '' }}">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Finalização</legend>
+                <div class="form-group">
+                    <label>📸 Fotos da Vistoria:</label>
+                    
+                    {% if modo == 'edicao' %}
+                        <div style="background-color: #fff3cd; color: #856404; padding: 12px; border-radius: 6px; margin-bottom: 10px; border: 1px solid #ffeeba; font-size: 0.9em;">
+                            ⚠️ <strong>Atenção:</strong> Ao editar, as fotos anteriores são substituídas.<br>
+                            Por favor, <strong>selecione novamente</strong> as fotos que deseja para este relatório.
+                        </div>
+                    {% endif %}
+
+                    <input type="file" name="foto_principal" id="foto_principal" accept="image/*" multiple>
+                    <p><small style="color: #666;">(Selecione um ou mais arquivos de imagem)</small></p>
+                </div>
+
+                <div class="form-group">
+                    <label>💡 Observações Adicionais:</label>
+                    <textarea name="observacao" rows="4">{{ dados.observacao if dados else '' }}</textarea>
+                </div>
+            </fieldset>
+
+            <div style="margin-top: 20px; display: flex; gap: 10px; padding-bottom: 30px;">
+                <button type="submit" class="btn-detalhe" style="background-color: #27ae60; flex: 2; color: white; border: none; padding: 12px; border-radius: 5px; cursor: pointer; font-weight: bold;">
+                    {{ '💾 Confirmar Alterações' if modo == 'edicao' else '💾 Salvar Vistoria' }}
+                </button>
+                <a href="/relatorio" class="btn-detalhe" style="background-color: #7f8c8d; text-align: center; flex: 1; text-decoration: none; color: white; padding: 12px; border-radius: 5px; font-weight: bold;">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
