@@ -3,3 +3,6 @@ __pycache__/
 .env
 venv/
 .vscode/
+
+# Node.js dependencies
+node_modules/

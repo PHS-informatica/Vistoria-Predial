@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>{{ 'Editar Vistoria' if modo == 'edicao' else 'Nova Vistoria' }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script defer src="{{ url_for('static', filename='analytics.bundle.js') }}"></script>
 </head>
 <body>
     <nav class="user-bar">
